@@ -2,6 +2,7 @@
     "name": "everlutionsk/enum-bundle",
     "description": "Enum in PHP with Symfony & Doctrine integration",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Everlution\\EnumBundle\\": "src/Everlution/EnumBundle"
