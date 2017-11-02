@@ -10,7 +10,7 @@
     },
     "require": {
         "php":">=7.1",
-        "symfony/form": "^3",
+        "symfony/form": "^3|^4.0",
         "doctrine/dbal": "^2.6",
         "doctrine/doctrine-bundle": "^1.7",
         "doctrine/orm": "^2.5"
