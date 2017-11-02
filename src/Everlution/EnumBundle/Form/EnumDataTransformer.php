@@ -36,7 +36,7 @@ class EnumDataTransformer implements DataTransformerInterface
     /**
      * @param mixed $value
      *
-     * @return int|null
+     * @return string
      */
     public function transform($value)
     {
@@ -50,14 +50,14 @@ class EnumDataTransformer implements DataTransformerInterface
     /**
      * @param mixed $value
      *
-     * @return EnumInterface
+     * @return EnumInterface|null
      */
     public function reverseTransform($value): ?EnumInterface
     {
-        if (is_numeric($value) === false) {
-            return null;
+        if ($value || is_numeric($value)) {
+            return new $this->enumClassName($value);
         }
 
-        return new $this->enumClassName((int) $value);
+        return null;
     }
 }

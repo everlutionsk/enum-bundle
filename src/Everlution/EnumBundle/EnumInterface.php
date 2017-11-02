@@ -14,9 +14,9 @@ use Serializable;
 interface EnumInterface extends Serializable
 {
     /**
-     * @return int
+     * @return mixed
      */
-    public function getValue(): int;
+    public function getValue();
 
     /**
      * @return string
@@ -24,7 +24,7 @@ interface EnumInterface extends Serializable
     public function getLabel(): string;
 
     /**
-     * @return int[] ex.: ["label" => self::CONSTANT]
+     * @return mixed[] ex.: ["label" => self::CONSTANT]
      */
     public static function getChoices(): array;
 }
