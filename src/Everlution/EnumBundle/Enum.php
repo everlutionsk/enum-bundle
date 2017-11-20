@@ -85,7 +85,9 @@ abstract class Enum implements EnumInterface
      */
     final public function unserialize($serialized): EnumInterface
     {
-        return static::__construct($serialized);
+        static::__construct($serialized);
+        
+        return $this;
     }
 
     /**
