@@ -30,16 +30,16 @@ class EnumDBType extends Type
     {
         $platform->markDoctrineTypeCommented($this);
 
-        return $platform->getSmallIntTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
     /**
      * @param EnumInterface|null $value
      * @param AbstractPlatform $platform
      *
-     * @return int|null
+     * @return mixed
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         $enumClass = $this->getEnumClass();
         if ($value instanceof $enumClass === false) {
@@ -50,7 +50,7 @@ class EnumDBType extends Type
     }
 
     /**
-     * @param int|null $value
+     * @param mixed $value
      * @param AbstractPlatform $platform
      *
      * @return EnumInterface|null
@@ -61,7 +61,7 @@ class EnumDBType extends Type
             /** @var EnumInterface $enumClass */
             $enumClass = $this->getEnumClass();
 
-            return new $enumClass((int) $value);
+            return new $enumClass($value);
         } catch (InvalidEnumValueException $e) {
             return null;
         }

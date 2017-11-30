@@ -13,17 +13,17 @@ use Everlution\EnumBundle\Exception\InvalidEnumValueException;
  */
 abstract class Enum implements EnumInterface
 {
-    /** @var int */
+    /** @var mixed */
     protected $value;
 
     /**
      * Enum constructor.
      *
-     * @param int $value constant
+     * @param mixed $value constant
      *
      * @throws InvalidEnumValueException
      */
-    public function __construct(int $value)
+    public function __construct($value)
     {
         if (in_array($value, $this->getChoices()) === false) {
             throw new InvalidEnumValueException(static::class, $value, $this->getChoices());
@@ -32,23 +32,23 @@ abstract class Enum implements EnumInterface
     }
 
     /**
-     * @return int[] ex.: ['label' => self::CONSTANT]
+     * @return mixed[] ex.: ['label' => self::CONSTANT]
      */
     abstract public static function getChoices(): array;
 
     /**
-     * @return int
+     * @return mixed
      */
-    final public function getValue(): int
+    final public function getValue()
     {
         return $this->value;
     }
 
     /**
-     * @param int $value
+     * @param mixed $value
      * @return bool
      */
-    final public function isValue(int $value): bool
+    final public function isValue($value): bool
     {
         return $this->value === $value;
     }
@@ -71,9 +71,9 @@ abstract class Enum implements EnumInterface
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    final public function serialize(): int
+    final public function serialize()
     {
         return $this->getValue();
     }
