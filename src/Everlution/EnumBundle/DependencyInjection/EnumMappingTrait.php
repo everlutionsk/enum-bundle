@@ -23,6 +23,10 @@ trait EnumMappingTrait
         $map['enum'] = NullEnum::class;
 
         foreach ($map as $enumName => $enumClass) {
+            if (Type::hasType($enumName)) {
+                continue;
+            }
+
             Type::addType($enumName, EnumDBType::class);
             /** @var EnumDBType $type */
             $type = Type::getType($enumName);
